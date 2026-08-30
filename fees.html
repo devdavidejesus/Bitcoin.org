@@ -1,0 +1,541 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta property="og:image" content="https://bitcoin.org/img/icons/opengraph-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitcoin Transaction Fees Today - Live Fee Rates | Bitcoin.org</title>
+
+
+<meta name="description" content="See current Bitcoin transaction fee rates, understand how fees work, why they change, and how to choose the right fee for your transaction.">
+
+<meta property="og:site_name" content="bitcoin.org">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bitcoin Transaction Fees Today - Live Fee Rates | Bitcoin.org">
+
+<meta property="og:description" content="See current Bitcoin transaction fee rates, understand how fees work, why they change, and how to choose the right fee for your transaction.">
+
+<meta property="og:url" content="https://bitcoin.org/fees/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bitcoin Transaction Fees Today - Live Fee Rates | Bitcoin.org">
+
+<meta name="twitter:description" content="See current Bitcoin transaction fee rates, understand how fees work, why they change, and how to choose the right fee for your transaction.">
+
+<meta name="twitter:image" content="https://bitcoin.org/img/icons/opengraph-card.png">
+
+
+
+<link rel="canonical" href="https://bitcoin.org/fees/">
+
+
+
+
+
+
+<link rel="stylesheet" href="css-font-awesome.min.css">
+<link rel="stylesheet" href="css-main.css">
+<!--[if lt IE 8]><link rel="stylesheet" href="css-ie.css"><script type="text/javascript" src="https://bitcoin.org/js/ie.js"></script><![endif]-->
+
+
+<script type="text/javascript" src="https://bitcoin.org/js/base.js?1788102608"></script>
+<script type="text/javascript" src="https://bitcoin.org/js/main.js?1788102608"></script>
+<script type="text/javascript" src="https://bitcoin.org/js/lottie-player.js?1788102608"></script>
+<script src="https://bitcoin.org/js/jquery/jquery-1.11.2.min.js"></script>
+<script src="https://bitcoin.org/js/jquery/jquery-ui.min.js"></script>
+<script src="https://bitcoin.org/js/jquery/jquery.qrcode.min.js"></script>
+
+<link rel="shortcut icon" href="https://bitcoin.org/favicon.png?1788102608">
+<link rel="apple-touch-icon-precomposed" href="https://bitcoin.org/img/icons/logo_ios.png?1788102608"/>
+<script>
+    window.cookieconsent_options = {
+        theme: 'light-floating'
+    }
+</script>
+<script type="text/javascript" src="https://bitcoin.org/js/cookieconsent/cookieconsent.js?1788102608"></script>
+
+</head>
+
+<body>
+
+
+
+<div class="donation-container" data-nosnippet>
+  <div class="donation-bar">
+    <p class="donation-bar-copy">
+      <strong>Keep Bitcoin.org independent and available worldwide.</strong>
+      <span>Community support helps maintain and improve this open resource.</span>
+    </p>
+    <button type="button" class="donation-btn" onclick="openDonationModal(event)">
+      Support Bitcoin.org
+    </button>
+  </div>
+</div>
+
+
+<div
+  id="donation-modal"
+  data-nosnippet
+  style="display: none"
+  class="donation-modal hidden"
+  role="dialog"
+  aria-modal="true"
+  aria-hidden="true"
+  aria-labelledby="donation-modal-title"
+  aria-describedby="donation-modal-description"
+  tabindex="-1"
+  data-rate-loading="Loading live BTC conversion…"
+  data-rate-unavailable="Live USD conversion is unavailable. Enter a BTC amount or donate without a preset.">
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <button type="button" class="modal-close-btn" onclick="closeDonationModal()" aria-label="Close donation dialog">
+        <span aria-hidden="true">×</span>
+      </button>
+      <h2 id="donation-modal-title" class="modal-header-text">Support Bitcoin.org</h2>
+      <!-- no subhead-links here -->
+      <p id="donation-modal-description" class="modal-subheader">Scan the QR code or open your Bitcoin wallet. You can optionally prefill an amount below.</p>
+    </div>
+    <div class="modal-body">
+      <section class="donation-payment-section" aria-labelledby="donation-payment-title">
+        <div
+          id="donation-qr-code"
+          data-address="bc1qp6ejw8ptj9l9pkscmlf8fhhkrrjeawgpyjvtq8"
+          role="img"
+          aria-label="Bitcoin donation QR code"></div>
+        <div class="donation-payment-actions">
+          <h3 id="donation-payment-title">Send with Bitcoin</h3>
+          <!-- no subhead-links here -->
+          <p class="donation-network-note">Bitcoin only · On-chain</p>
+          <a class="donation-wallet-btn" href="bitcoin:bc1qp6ejw8ptj9l9pkscmlf8fhhkrrjeawgpyjvtq8">
+            Open in wallet
+          </a>
+          <div class="donation-address-block">
+            <code id="donation-btc-address-text">bc1qp6ejw8ptj9l9pkscmlf8fhhkrrjeawgpyjvtq8</code>
+          </div>
+          <button
+            type="button"
+            class="donation-copy-btn"
+            onclick="copyDonationAddress(this)"
+            data-default-label="Copy address"
+            data-copied-label="Address copied"
+            data-failed-label="Unable to copy automatically. Select the address above.">
+            Copy address
+          </button>
+          <p id="donation-copy-status" class="donation-copy-status" role="status" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="donation-amount-section" aria-labelledby="donation-amount-title">
+        <h3 id="donation-amount-title">Prefill an amount (optional)</h3>
+        <!-- no subhead-links here -->
+        <div class="donation-amount-options">
+        
+        <button
+          type="button"
+          class="donation-amount-btn"
+          data-amount-usd="10"
+          aria-pressed="false">
+          <span>$10</span>
+          <small class="donation-amount-usd-in-btc">… BTC</small>
+        </button>
+        
+        <button
+          type="button"
+          class="donation-amount-btn is-selected"
+          data-amount-usd="25"
+          aria-pressed="true">
+          <span>$25</span>
+          <small class="donation-amount-usd-in-btc">… BTC</small>
+        </button>
+        
+        <button
+          type="button"
+          class="donation-amount-btn"
+          data-amount-usd="50"
+          aria-pressed="false">
+          <span>$50</span>
+          <small class="donation-amount-usd-in-btc">… BTC</small>
+        </button>
+        
+        </div>
+
+        <div class="donation-custom-amounts">
+          <label for="donation-input-amount-btc">
+            <span>BTC amount</span>
+            <input
+              type="text"
+              inputmode="decimal"
+              autocomplete="off"
+              placeholder="0.00000000"
+              id="donation-input-amount-btc"
+              class="donation-amount-input">
+          </label>
+          <label for="donation-input-amount-usd">
+            <span>USD amount</span>
+            <input
+              type="text"
+              inputmode="decimal"
+              autocomplete="off"
+              placeholder="0.00"
+              id="donation-input-amount-usd"
+              class="donation-amount-input">
+          </label>
+        </div>
+        <p id="donation-rate-status" class="donation-rate-status" role="status" aria-live="polite"></p>
+      </section>
+
+      <details class="donation-more-options">
+        <summary>Add an optional wallet note</summary>
+        <label for="donation-input-message">Optional note for your wallet</label>
+        <textarea class="donation-amount-input" id="donation-input-message" rows="2"></textarea>
+      </details>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="detectmobile" class="detectmobile"></div>
+
+
+
+
+
+
+
+<div class="head"><div>
+  
+
+<a class="logo" href="https://bitcoin.org/en/"><img src="https://bitcoin.org/img/icons/logotop.svg?1788102608" alt="Bitcoin"></a>
+
+  
+
+<ul id="menusimple" class="menusimple menumain" onclick="mobileMenuHover(event);" ontouchstart="mobileMenuHover(event);">
+  <li><a class="is-expand">Introduction</a>
+    <ul>
+      <li><a href="https://bitcoin.org/en/bitcoin-for-individuals">Individuals</a></li>
+      <li><a href="https://bitcoin.org/en/bitcoin-for-businesses">Businesses</a></li>
+      <li><a href="https://developer.bitcoin.org/">Developers</a></li>
+      <li><a href="https://bitcoin.org/en/getting-started">Getting started</a></li>
+      <li><a href="https://bitcoin.org/en/how-it-works">How it works</a></li>
+      <li><a href="https://bitcoin.org/en/you-need-to-know">You need to know</a></li>
+      
+      <li><a href="https://bitcoin.org/en/bitcoin-paper">White paper</a></li>
+      
+    </ul>
+  </li>
+  <li><a class="is-expand">Resources</a>
+    <ul>
+      <li><a href="https://bitcoin.org/en/resources">Resources</a>
+      <li><a href="https://bitcoin.org/en/exchanges">Exchanges</a></li>
+      <li><a href="https://bitcoin.org/en/community">Community</a></li>
+      <li><a href="https://bitcoin.org/bips/">BIPs list</a></li>
+      
+      
+      <li><a href="https://bitcoin.org/en/halving">Halving</a></li>
+      
+      
+      
+      <li><a href="https://developer.bitcoin.org/">Documentation</a></li>
+      
+      <li><a href="https://bitcoin.org/en/vocabulary">Vocabulary</a></li>
+      
+        <li><a href="https://bitcoin.org/en/bitcoin-core/">Bitcoin Core</a></li>
+      
+    </ul>
+  </li>
+  <li><a href="https://bitcoin.org/en/innovation">Innovation</a></li>
+  <li><a class="is-expand">Participate</a>
+    <ul>
+      <li><a href="https://bitcoin.org/en/support-bitcoin">Support Bitcoin</a>
+      <li id="buybitcoinmenulink" ><a href="https://bitcoin.org/en/buy">Buy Bitcoin</a></li>
+      <li id="sellbitcoinmenulink" ><a href="https://bitcoin.org/en/sell">Sell Bitcoin</a></li>
+      <li><a href="https://bitcoin.org/en/full-node">Running a full node</a></li>
+      <li><a href="https://bitcoin.org/en/development">Development</a></li>
+    </ul>
+  </li>
+  <li><a href="https://bitcoin.org/price/">Price</a></li>
+  <li class="active"><a href="https://bitcoin.org/fees/">Fees</a></li>
+  <li><a href="https://bitcoin.org/en/faq">FAQ</a></li>
+</ul>
+
+  
+
+<a id="menumobile" class="menumobile" onclick="mobileMenuShow(event);" ontouchstart="mobileMenuShow(event);"></a>
+
+  
+</div></div>
+
+<div class="body">
+  
+
+<div class="breadcrumbs">
+  <div class="container">
+    
+  </div>
+</div>
+
+  
+
+<div id="content" class="content">
+  <main class="fees-page" id="fees-page">
+  <section class="fees-hero">
+    <div class="container">
+      <p class="fees-eyebrow">Bitcoin network data</p>
+      <h1>Bitcoin transaction fees</h1>
+      <p class="fees-hero__summary">What it costs to send a transaction right now &mdash; and how fees work.</p>
+
+      <div class="fees-tiers" aria-live="polite" aria-atomic="true">
+        <div class="fees-tier">
+          <p class="fees-tier__label">Fastest</p>
+          <p class="fees-tier__target">next block</p>
+          <p class="fees-tier__rate"><span id="fee-rate-fastest">&mdash;</span> <span class="fees-tier__unit">sat/vB</span></p>
+          <p class="fees-tier__cost" id="fee-cost-fastest">&nbsp;</p>
+        </div>
+        <div class="fees-tier">
+          <p class="fees-tier__label">Fast</p>
+          <p class="fees-tier__target">about 30 minutes</p>
+          <p class="fees-tier__rate"><span id="fee-rate-half">&mdash;</span> <span class="fees-tier__unit">sat/vB</span></p>
+          <p class="fees-tier__cost" id="fee-cost-half">&nbsp;</p>
+        </div>
+        <div class="fees-tier">
+          <p class="fees-tier__label">Standard</p>
+          <p class="fees-tier__target">about an hour</p>
+          <p class="fees-tier__rate"><span id="fee-rate-hour">&mdash;</span> <span class="fees-tier__unit">sat/vB</span></p>
+          <p class="fees-tier__cost" id="fee-cost-hour">&nbsp;</p>
+        </div>
+        <div class="fees-tier">
+          <p class="fees-tier__label">Economy</p>
+          <p class="fees-tier__target">no hurry</p>
+          <p class="fees-tier__rate"><span id="fee-rate-economy">&mdash;</span> <span class="fees-tier__unit">sat/vB</span></p>
+          <p class="fees-tier__cost" id="fee-cost-economy">&nbsp;</p>
+        </div>
+      </div>
+      <p class="fees-updated" id="fees-updated">Connecting to network data&hellip;</p>
+      <p class="fees-note">Approximate cost for a typical transaction of about 140 vB. Your wallet shows the exact fee before you send.</p>
+    </div>
+  </section>
+
+  <div class="container fees-content">
+    <section class="fees-section">
+      <h2 id="what-is-a-transaction-fee">What is a transaction fee?</h2>
+      <p>Every Bitcoin transaction includes a small fee. The fee does not go to any company or to this website: it is collected by the miner who includes your transaction in a block. Fees reward miners for securing the network, and they act as the price of space in the next block, which is limited.</p>
+    </section>
+
+    <section class="fees-section">
+      <h2 id="why-fees-change">Why fees change</h2>
+      <p>Block space is roughly constant, but the number of people trying to transact is not. When many transactions compete at once, fees rise; when the network is quiet, fees fall. The same transaction can cost noticeably more on a busy day than on a calm one. Nothing is wrong in either case &mdash; the fee market is simply doing its job of deciding whose transactions go first.</p>
+    </section>
+
+    <section class="fees-section">
+      <h2 id="how-fees-are-measured">How fees are measured: sat/vB</h2>
+      <p>Fees are quoted in satoshis per virtual byte (sat/vB). You pay for the <em>size</em> of your transaction in the block, not for the amount of bitcoin you send: moving a small payment and moving a fortune can cost the same fee if the transactions are the same size. A satoshi is the smallest unit of bitcoin (100,000,000 satoshis = 1 BTC). A simple payment &mdash; one input, two outputs &mdash; takes up around 140 virtual bytes; transactions with more inputs and outputs are larger.</p>
+    </section>
+
+    <section class="fees-section">
+      <h2 id="choosing-a-fee">Choosing a fee</h2>
+      <p>Most wallets estimate fees for you and let you choose between speed and economy: a higher rate aims for the next block, a lower rate waits until the network is quieter. Different wallets can suggest different numbers for the same moment &mdash; fee estimation is a prediction, not an exact science. If your payment is not urgent, choosing a lower fee and waiting is a perfectly good strategy.</p>
+    </section>
+
+    <section class="fees-section">
+      <h2 id="if-your-transaction-seems-stuck">If your transaction seems stuck</h2>
+      <p>A transaction with a low fee during a busy period is not lost &mdash; it is waiting in a queue (the mempool) until space is available. It may confirm once demand for block space falls. Many wallets can also speed up a waiting transaction by increasing its fee (a feature called Replace-by-Fee), or you can simply wait: an unconfirmed transaction either confirms or is eventually dropped by the network &mdash; and in that case the funds simply remain spendable in your wallet, because they never actually left it.</p>
+    </section>
+
+    <section class="fees-section">
+      <h2 id="small-and-everyday-payments">Small and everyday payments</h2>
+      <p>For small or frequent payments, the <a href="https://bitcoin.org/en/resources#lightning">Lightning Network</a> offers near-instant transfers with fees that are typically a tiny fraction of a cent. It works on top of Bitcoin and is supported by a growing number of wallets and merchants &mdash; see <a href="https://bitcoin.org/en/spend-bitcoin">Spend Bitcoin</a> for places that accept it.</p>
+    </section>
+
+    <p class="fees-attribution">Live estimates from mempool.space, with blockstream.info as a fallback, fetched directly in your browser. This page never handles your funds.</p>
+  </div>
+</main>
+
+</div>
+
+  <div class="footer">
+    <div class="container">
+       
+
+<a class="logo-footer" href="https://bitcoin.org/en/">
+  <img src="https://bitcoin.org/img/icons/logo-footer.svg?1788102608" alt="Bitcoin">
+</a> 
+       
+
+<div class="row footer-row">
+  <div class="donate">
+    <div class="row donate-row">
+      <div>
+        <span class="footer-title">Support Bitcoin.org:</span>
+        <a onclick="openDonationModal()" class="donate-btn btn-bright">Donate</a>
+        <p class="donate-text">
+          <a class="donate-link" href="bitcoin:bc1qp6ejw8ptj9l9pkscmlf8fhhkrrjeawgpyjvtq8" target="_blank">bc1qp6ejw8ptj9l9pkscmlf8fhhkrrjeawgpyjvtq8</a>
+        </p>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row footermenu">
+    <div class="footermenu-item footermenu-introduction">
+      <p class="footer-title">Introduction:</p>
+      <ul class="footermenu-list">
+        <li>
+          <a href="https://bitcoin.org/en/bitcoin-for-individuals">Individuals</a>
+        </li>
+        <li>
+          <a href="https://bitcoin.org/en/bitcoin-for-businesses">Businesses</a>
+        </li>
+        <li>
+          <a href="https://developer.bitcoin.org/">Developers</a>
+        </li>
+        <li>
+          <a href="https://bitcoin.org/en/getting-started">Getting started</a>
+        </li>
+        <li>
+          <a href="https://bitcoin.org/en/how-it-works">How it works</a>
+        </li>
+        <li>
+          <a href="https://bitcoin.org/en/you-need-to-know">You need to know</a>
+        </li>
+        
+        <li>
+          <a href="https://bitcoin.org/en/bitcoin-paper">White paper</a>
+        </li>
+        
+      </ul>
+    </div>
+    
+    <div class="footermenu-item footermenu-resources">
+      <p class="footer-title">Resources:</p>
+      <ul class="footermenu-list">
+        <li>
+          <a href="https://bitcoin.org/en/resources">Resources</a>
+        <li>
+          <a href="https://bitcoin.org/en/exchanges">Exchanges</a>
+        </li>
+        <li>
+          <a href="https://bitcoin.org/en/community">Community</a>
+        </li>
+        <li>
+          <a href="https://bitcoin.org/bips/">BIPs list</a>
+        </li>
+        
+        <li>
+          <a href="https://bitcoin.org/en/halving">Halving</a>
+        </li>
+        
+        
+        <li>
+          <a href="https://developer.bitcoin.org/">Documentation</a>
+        </li>
+        
+        <li>
+          <a href="https://bitcoin.org/en/vocabulary">Vocabulary
+          </a>
+        </li>
+        
+        <li>
+          <a href="https://bitcoin.org/en/bitcoin-core/">Bitcoin Core</a>
+        </li>
+        
+      </ul>
+    </div>
+    
+    <div class="footermenu-item footermenu-participate">
+      <p class="footer-title">Participate:</p>
+      <ul class="footermenu-list">
+        <li>
+          <a href="https://bitcoin.org/en/support-bitcoin">Support Bitcoin</a>
+        <li id="buybitcoinfootermenulink" >
+          <a href="https://bitcoin.org/en/buy">Buy Bitcoin</a>
+        </li>
+        <li id="sellbitcoinfootermenulink" >
+          <a href="https://bitcoin.org/en/sell">Sell Bitcoin</a>
+        </li>
+        
+        <li>
+          <a href="https://bitcoin.org/en/full-node">Running a full node</a>
+        </li>
+        
+        <li>
+          <a href="https://bitcoin.org/en/development">Development</a>
+        </li>
+      </ul>
+    </div>
+    <div class="footermenu-item footermenu-other">
+      <p class="footer-title">Other:</p>
+      
+          <a href="https://bitcoin.org/price/">Price</a>
+      
+      
+          <a href="https://bitcoin.org/fees/">Fees</a>
+      
+      
+      <a href="https://bitcoin.org/en/scams">Avoid Scams</a>
+      
+      <a href="https://bitcoin.org/en/legal">Legal</a>
+      
+      <a href="https://bitcoin.org/en/privacy">Privacy Policy</a>
+      
+      <a href="https://bitcoin.org/en/press">Press</a>
+      <a href="https://bitcoin.org/en/about-us">About bitcoin.org</a>
+      <a href="https://bitcoin.org/en/blog">Blog</a>
+    </div>
+  </div>
+</div>
+ 
+       
+
+<div class="footersponsor">
+  <!--<div><span>A community website sponsored by</span> <a href="https://bitcoinfoundation.org/"><img src="https://bitcoin.org/img/brand/bitcoinfoundation.png?1788102608" alt="Bitcoin Foundation"></a></div>-->
+</div>
+
+    </div>
+    
+
+<div class="footer-bottom">
+  <div class="container">
+    <div class="row footer-bottom-row">
+      <div class="footerlicense">© Bitcoin Project 2009-2026 Released under the <a href="https://opensource.org/licenses/mit-license.php" target="_blank">MIT license</a></div>
+      <div class="row footer-status-block">
+        <a href="https://bitcoin.org/en/alerts" class="statusmenu">Network Status</a>
+        
+      </div>
+<!--      <div class="row">  -->
+        
+<!--    </div> -->
+    </div>
+  </div>
+</div>
+
+  </div>
+  
+  
+</div>
+
+
+
+<script type="text/javascript">
+  fallbackSVG();
+  addAnchorLinks();
+  trackOutgoingLinks();
+  toggleDarkMode();
+  handlePageRedirect( false ,  false );
+</script>
+
+
+
+  <script type="text/javascript" src="fees.js"></script>
+
+
+
+
+
+</body>
+
+</html>
